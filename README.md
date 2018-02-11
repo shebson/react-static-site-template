@@ -41,13 +41,19 @@ Runs the linter and test suite and generates a coverage report.
 ### `yarn run lint`
 Runs eslint
 
-### `yarn run deploy`
+### `yarn run tdd`
 
-Builds the app for production to the `build` folder and uploads the build to S3.<br>
-It bundles React in production mode, crawls the app and generates static
-html snapshots, and then uploads these to S3.
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](#running-tests) for more information.
 
-The script will prompt you to confirm changes before it applies them.
+### `yarn run build`
+
+Builds the app for production to the `build` folder.<br>
+It bundles React in production mode. It also crawls the app and generates static
+html snapshots that can be hosted on AWS.
+
+The project does not currently include a deploy script, but I plan to add one
+to automate deploys.
 
 ## Lint rules
 This project's lint rules are based on AirBNB's JavaScript style guide. We
