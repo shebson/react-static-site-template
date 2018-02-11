@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
+  "deployment": {
+    "__comment__": "Set bucket name to enable uploads to S3",
+    "bucket": null,
+    "region": "us-east-1",
+    "profile": "default"
+  },
   "dependencies": {
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -20,10 +26,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
+    "upload": "s3p sync",
+    "deploy": "yarn run build && yarn run upload",
     "lint": "eslint ./src",
     "tdd": "react-scripts test --env=jsdom",
     "test": "yarn run lint && react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "s3-publish": "^1.0.4"
+  }
 }
