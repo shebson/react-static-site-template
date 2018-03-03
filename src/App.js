@@ -1,6 +1,8 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
+
 import Home from './components/home';
+import FourOhFour from './components/404';
 import './scss/App.scss';
 
 export default () => (
@@ -13,7 +15,10 @@ export default () => (
       </nav>
     </header>
     <div className="container">
-      <Route exact path="/" component={Home} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/" component={FourOhFour} />
+      </Switch>
     </div>
   </div>
 );
