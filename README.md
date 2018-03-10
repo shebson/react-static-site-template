@@ -45,7 +45,8 @@ Runs eslint
 
 Builds the app for production to the `build` folder and uploads the build to S3.<br>
 It bundles React in production mode, crawls the app and generates static
-html snapshots, and then uploads these to S3.
+html snapshots, and then uploads these to S3. It also uses purifycss to remove all unused css
+classes.
 
 The script will prompt you to confirm changes before it applies them.
 

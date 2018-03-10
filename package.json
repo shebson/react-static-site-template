@@ -69,6 +69,8 @@
     "test": "yarn run lint && node scripts/test.js --env=jsdom --coverage"
   },
   "devDependencies": {
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
     "s3-publish": "^1.0.4"
   },
   "jest": {

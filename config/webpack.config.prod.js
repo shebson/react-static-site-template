@@ -2,6 +2,7 @@
 
 const autoprefixer = require('autoprefixer');
 const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -12,6 +13,10 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const PurifyCSSPlugin = require('purifycss-webpack');
+
+// This is a filter of whitelisted classes that will not be removed by PurifyCSS
+const cssClassWhitelist = ['macbook', 'TakehomeHQ', 'TakehomeHub', 'TakeHomeProject'];
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -340,6 +345,18 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // PurifyCSS removes unused CSS classes by iterating over html and js
+    new PurifyCSSPlugin({
+      // Give paths to parse for rules. These should be absolute!
+      paths: glob.sync(
+        path.join(__dirname, '../src/**/*.js')
+      ),
+      purifyOptions: {
+        whitelist: cssClassWhitelist
+      },
+      minimize: true,
+      verbose: true
+    })
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
