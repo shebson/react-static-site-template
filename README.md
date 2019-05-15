@@ -1,7 +1,7 @@
 # react-static-site-template
 
 This project is a template that I've found useful to quickly prototyping personal projects in 2017
-and 2018. It is based on Create React App](https://github.com/facebookincubator/create-react-app)
+and 2018. It is based on [Create React App](https://github.com/facebookincubator/create-react-app)
 and adds a couple of additional features and sane defaults:
 
  - React-router
